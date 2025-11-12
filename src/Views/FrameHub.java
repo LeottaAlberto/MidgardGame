@@ -10,21 +10,21 @@ import javax.swing.JButton;
 
 public class FrameHub extends javax.swing.JFrame {
     
-    private FrameCharacterChoice fcc; 
-    private final FrameSettings fs;
-    private final AudioModel audioModel;
-    private final FontModel fModel;
-    private final FrameInfo fi;
-    private PathStorage pathStorage;
+    private FrameCharacterChoice fr_char_choice; 
+    private final FrameSettings fr_setting;
+    private final AudioModel audio_model;
+    private final FontModel font_model;
+    private final FrameInfo fr_info;
+    private PathStorage path_storage;
     
     //Costruttore
-    public FrameHub(FrameSettings fs, AudioModel audioModel, FontModel fModell, FrameInfo fi) {
+    public FrameHub(FrameSettings fr_setting, AudioModel audio_model, FontModel font_modell, FrameInfo fr_info) {
         initComponents();
-        this.fs = fs;
-        this.fi = fi;
-        this.audioModel = audioModel;
-        this.fModel = fModell;
-        this.fi.setVisible(false);
+        
+        this.fr_setting = fr_setting;
+        this.fr_info = fr_info;
+        this.audio_model = audio_model;
+        this.font_model = font_modell;
     }
 
     @SuppressWarnings("unchecked")
@@ -187,7 +187,7 @@ public class FrameHub extends javax.swing.JFrame {
      * @param evt un evento
      */
     private void jB_PlayMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_PlayMouseMoved
-        hoverBTN(jB_Play, pathStorage.B_PLAY_HOVER);
+        hoverBTN(jB_Play, PathStorage.B_PLAY_HOVER);
     }//GEN-LAST:event_jB_PlayMouseMoved
 
     /**
@@ -203,7 +203,7 @@ public class FrameHub extends javax.swing.JFrame {
      * @param evt un evento
      */
     private void jB_PlayMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_PlayMouseExited
-        hoverBTN(jB_Play, pathStorage.B_PLAY);
+        hoverBTN(jB_Play, PathStorage.B_PLAY);
     }//GEN-LAST:event_jB_PlayMouseExited
 
     /**
@@ -211,7 +211,7 @@ public class FrameHub extends javax.swing.JFrame {
      * @param evt un evento
      */
     private void jB_ImpostazioniMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_ImpostazioniMouseExited
-        hoverBTN(jB_Impostazioni, pathStorage.B_SETTINGS);
+        hoverBTN(jB_Impostazioni, PathStorage.B_SETTINGS);
     }//GEN-LAST:event_jB_ImpostazioniMouseExited
 
     /**
@@ -219,7 +219,7 @@ public class FrameHub extends javax.swing.JFrame {
      * @param evt un evento
      */
     private void jB_ImpostazioniMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_ImpostazioniMouseMoved
-        hoverBTN(jB_Impostazioni, pathStorage.B_SETTINGS_HOVER);
+        hoverBTN(jB_Impostazioni, PathStorage.B_SETTINGS_HOVER);
     }//GEN-LAST:event_jB_ImpostazioniMouseMoved
 
     /**
@@ -227,7 +227,7 @@ public class FrameHub extends javax.swing.JFrame {
      * @param evt evento
      */
     private void jB_ImpostazioniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_ImpostazioniActionPerformed
-        fs.showFrameSettings();
+        fr_setting.showFrameSettings();
     }//GEN-LAST:event_jB_ImpostazioniActionPerformed
 
     /**
@@ -243,7 +243,7 @@ public class FrameHub extends javax.swing.JFrame {
      * @param evt un evento
      */
     private void jB_ExitMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_ExitMouseMoved
-        hoverBTN(jB_Exit, pathStorage.B_EXIT_HOVER);
+        hoverBTN(jB_Exit, PathStorage.B_EXIT_HOVER);
     }//GEN-LAST:event_jB_ExitMouseMoved
 
     /**
@@ -251,7 +251,7 @@ public class FrameHub extends javax.swing.JFrame {
      * @param evt un evento
      */
     private void jB_ExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_ExitMouseExited
-        hoverBTN(jB_Exit, pathStorage.B_EXIT);
+        hoverBTN(jB_Exit, PathStorage.B_EXIT);
     }//GEN-LAST:event_jB_ExitMouseExited
 
     private void jB_btnEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jB_btnEntered
@@ -259,14 +259,16 @@ public class FrameHub extends javax.swing.JFrame {
     }//GEN-LAST:event_jB_btnEntered
         
     public void checkSoundEffect(String path, int volume, String nameSound){
-        if(this.fs.isJCB_SoundEffect()){
-            this.audioModel.changePathSoundEffect(path, volume, nameSound);
-            this.audioModel.restartAudio();
+        if(this.fr_setting.isJCB_SoundEffect()){
+            this.audio_model.changePathSoundEffect(path, volume, nameSound);
+            this.audio_model.restartAudio();
         }
     }
     
     private void hoverBTN(JButton btn, String path){
-        if(btn.getIcon() != new ImageIcon(getClass().getResource(path))) 
+        ImageIcon img = new ImageIcon(getClass().getResource(path));
+        
+        if(btn.getIcon() != img) 
             btn.setIcon(new ImageIcon(getClass().getResource(path)));
     }
     
@@ -274,15 +276,22 @@ public class FrameHub extends javax.swing.JFrame {
      * Quando il jB_Play viene cliccato viene aperto il FrameCharacterChoice e viene chiuso il frame corrente
      */
     private void openFrameCharChoice(){
-        fcc = new FrameCharacterChoice(audioModel, this.fs, this.fModel, this.fi);
-        fcc.setResizable(false);
-        fcc.setLocationRelativeTo(this);
-        fcc.setSize(1920, 1080);
+        fr_char_choice = new FrameCharacterChoice(
+                this.audio_model, 
+                this.fr_setting, 
+                this.font_model, 
+                this.fr_info);
+        
+        fr_char_choice.setResizable(false);
+        fr_char_choice.setLocationRelativeTo(this);
+        fr_char_choice.setSize(1920, 1080);
+        
         //Apre a schermo intero la finestra
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice cc = ge.getDefaultScreenDevice();
-        //cc.setFullScreenWindow(fcc);
-        fcc.setVisible(true);
+        cc.setFullScreenWindow(fr_char_choice);
+        
+        fr_char_choice.setVisible(true);
         this.dispose();
     }
             
