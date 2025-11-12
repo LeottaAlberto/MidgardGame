@@ -6,11 +6,16 @@ import Models.SettingsModel;
 import Views.*;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.util.Locale;
+import javax.swing.JFrame;
 
 public class MainClass {
 
     public static final int NUM_CHARACTER = 16;
     public static final int NUM_ABILITY = NUM_CHARACTER;
+    
+    public static final int FRAME_INFO_WIDTH = 1600;
+    public static final int FRAME_INFO_HEIGHT = 1000;
     
     public static MainClass mc = new MainClass();
 
@@ -41,20 +46,24 @@ public class MainClass {
         audio_model.setVolumeBase(audio_model.getMediunV());
         audio_model.startBase();
         
-        openFrameHub();        
+        // openFrameHub();        
+        openFrame(fr_hub);        
     }
     
-    public static void openFrameHub(){
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice cc = ge.getDefaultScreenDevice();
-        cc.setFullScreenWindow(fr_hub);
-    }    
+    public static void openFrame(JFrame frame, JFrame frame_rif, int width, int height) {
+        if(!frame.isVisible()) {
+            fr_info.setSize(width, height); 
+            frame.setLocationRelativeTo(frame_rif);
+            frame.setVisible(true);
+        }
+    }
     
-    public static void openFrameInfo(FrameInfo fr_info){
-        if(!fr_info.isVisible()){
-            fr_info.setLocationRelativeTo(null);
-            fr_info.setSize(1600, 1000);
-            fr_info.setVisible(true);
+    public static void openFrame(JFrame frame) {
+        if(!frame.isVisible()) {
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice cc = ge.getDefaultScreenDevice();
+            cc.setFullScreenWindow(frame);
+            frame.setVisible(true);
         }
     }
 }
