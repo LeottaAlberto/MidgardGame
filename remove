@@ -1,0 +1,35 @@
+[33mcommit f1da7e905f032def3c62162c977c5a693f4238d3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mrefactor_main_class[m[33m, [m[1;31morigin/refactor_main_class[m[33m)[m
+Author: LeottaAlberto <leottaalberto43@gmail.com>
+Date:   Wed Nov 12 14:53:52 2025 +0100
+
+    merge(refactor_main_class -> refactor)
+
+[33mcommit ba68ce70553a5f8ec85a1b09359700b175f2a08c[m
+Author: LeottaAlberto <leottaalberto43@gmail.com>
+Date:   Wed Nov 12 14:48:59 2025 +0100
+
+    refactor(MainClass.java): generalize openFrame with two way: openFrame(frame, frame_rif, w, h) and openFrame(frame) to open frame in fullscreen
+
+[33mcommit 754080545073e0e25fc1919c841e623d72bff9f7[m
+Author: LeottaAlberto <leottaalberto43@gmail.com>
+Date:   Wed Nov 12 12:54:19 2025 +0100
+
+    refactor(MainClass.java, FrameHub.java): initial refactor on MainClass.java, the FrameHub.java is open in widescreen
+
+[33mcommit 51229c43ff31651c4898023abb4f63cebe08a757[m[33m ([m[1;31morigin/refactor[m[33m, [m[1;31morigin/fix_full_screen[m[33m, [m[1;31morigin/fix_bug[m[33m, [m[1;32mrefactor[m[33m, [m[1;32mfix_full_screen[m[33m, [m[1;32mfix_bug[m[33m)[m
+Author: LeottaAlberto <leottaalberto43@gmail.com>
+Date:   Wed Nov 12 11:34:19 2025 +0100
+
+    chore: add existing project files
+
+[33mcommit 9425459a85a978ea43d5a41d4f69c9cffa9fef53[m
+Author: LeottaAlberto <162788990+LeottaAlberto@users.noreply.github.com>
+Date:   Wed Nov 12 11:48:33 2025 +0100
+
+    Update README.md
+
+[33mcommit e0648db57ed4071de0cc2d3a53e3e72a1aef3aa4[m
+Author: LeottaAlberto <162788990+LeottaAlberto@users.noreply.github.com>
+Date:   Wed Nov 12 11:48:08 2025 +0100
+
+    Initial commit
