@@ -19,12 +19,12 @@ public class FrameHub extends javax.swing.JFrame {
     
     //Costruttore
     public FrameHub(FrameSettings fs, AudioModel audioModel, FontModel fModell, FrameInfo fi) {
+        this.setUndecorated(true);
         initComponents();
-        this.fs = fs;
         this.fi = fi;
+        this.fs = fs;
         this.audioModel = audioModel;
         this.fModel = fModell;
-        this.fi.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")

@@ -13,50 +13,48 @@ public class MainClass {
     public static final int NUM_ABILITY = NUM_CHARACTER;
     
     public static MainClass mc = new MainClass();
-    private static AudioModel audioModel;
-    private static FontModel fontModel;
-    private static SettingsModel settingsModel;
-    private static FrameSettings fs;
-    private static FrameHub fh;
-    private static FrameInfo fi;
+
+    private static AudioModel audio_model;
+    private static FontModel font_model;
+    private static SettingsModel settings_model;
+    private static FrameSettings fr_settings;
+    private static FrameHub fr_hub;
+    private static FrameInfo fr_info;
     
     public static void main(String[] args) {
-        audioModel = new AudioModel(); 
-        fontModel = new FontModel(); //gestione Font
-        settingsModel = new SettingsModel();  //Model Settings
+        audio_model = new AudioModel();        // Audio Model
+        font_model = new FontModel();          // Font Model
+        settings_model = new SettingsModel();  // Settings Model
         
         
-        fi = new FrameInfo(); //Frame Info
-        fs = new FrameSettings(fontModel, null, null); //Frame Settings
-        fh = new FrameHub(fs, audioModel, fontModel, fi);
+        fr_info = new FrameInfo(); //Frame Info
+        fr_settings = new FrameSettings(font_model, null, null); //Frame Settings
+        fr_hub = new FrameHub(fr_settings, audio_model, font_model, fr_info);
         
-        fi.setVisible(false);
+        fr_info.setVisible(false);
             
-        //Settings
-        settingsModel.setAudioModel(audioModel);
-        fs.setModel(settingsModel);
+        // Settings
+        settings_model.setAudioModel(audio_model);
+        fr_settings.setModel(settings_model);
        
-        //Gestione audio
-        audioModel.setVolumeBase(audioModel.getMediunV());
-        audioModel.startBase();
-        //openFrameInfo(fi);
-        //Gestione Hub(prima finestra)
+        // Gestione audio
+        audio_model.setVolumeBase(audio_model.getMediunV());
+        audio_model.startBase();
+        
         openFrameHub();        
     }
     
     public static void openFrameHub(){
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice cc = ge.getDefaultScreenDevice();
-        //cc.setFullScreenWindow(fh);
-        fh.setVisible(true);
+        cc.setFullScreenWindow(fr_hub);
     }    
     
-    public static void openFrameInfo(FrameInfo fi){
-        if(!fi.isVisible()){
-            fi.setLocationRelativeTo(null);
-            fi.setSize(1600, 1000);
-            fi.setResizable(false);
-            fi.setVisible(true);
+    public static void openFrameInfo(FrameInfo fr_info){
+        if(!fr_info.isVisible()){
+            fr_info.setLocationRelativeTo(null);
+            fr_info.setSize(1600, 1000);
+            fr_info.setVisible(true);
         }
     }
 }
