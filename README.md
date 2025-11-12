@@ -1,2 +1,2 @@
 # MidgardGame
-An old project on Java.
+An old project in Java.
