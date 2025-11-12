@@ -1,0 +1,8 @@
+Benvenuto su Midgard Game! |Qui potrai scegliere il tuo personaggio dalla lista disponibile. I personaggi si dividono in due categorie: gli Hero, piu' forti e fighi, e i Normal, meno potenti ma comunque bravi a lottare. |Ogni personaggio ha le proprie abilita' uniche e diverse statistiche di attacco e difesa. |Inoltre, tieni presente che gli attacchi possono fare piu' danno se colui che attacca è avvantaggiato secondo un determinato schema. |E' importante quindi scegliere il personaggio giusto per il tuo stile di gioco. |Una volta scelto il tuo personaggio, seleziona l'avversario controllato dal computer. Che la battaglia abbia inizio!. |L'alternanza dei turni e' decisa casualmente, quindi cerca di rimanere concentrato. Durante la battaglia, potrai attaccare, difendere o utilizzare la tua abilita' speciale. L'attacco infligge danni al personaggio avversario; La difesa riduce i danni subiti e in determinati casi li azzera; l'abilità speciale ha un effetto unico che puo' influenzare il risultato della battaglia. Per utilizzare gli attacchi speciali avrai bisogno del mana, che verra' consumato in base al costo dell'attacco speciale. Il mana si ricarichera' ogni turno di 20 punti, quindi dovrai pianificare attentamente quando utilizzare le tue mosse speciali e quando risparmiare il mana per turni futuri. Ricorda che ogni personaggio ha un certo numero di punti vita e l'obiettivo è sconfiggere il personaggio avversario prima che lui faccia altrettanto. |Buona fortuna nella tua battaglia!
+
+
+
+
+
+
+
