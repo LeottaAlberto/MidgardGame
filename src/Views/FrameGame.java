@@ -37,15 +37,13 @@ public class FrameGame extends javax.swing.JFrame {
     private boolean fine;           //true->partita finita / false-> partita in corso
     private TextAreaPlus txtA_PL;   //log di gioco
 
-    public FrameGame(AudioModel audioModel, FrameSettings fs, Icon nameCOM, Icon namePL, FontModel fModel, FrameInfo fi) {
+    public FrameGame(AudioModel audioModel, FrameSettings fs, FontModel fModel, FrameInfo fi) {
         initComponents();
         this.setSize(1920, 1080);
         this.txtA_PL = new TextAreaPlus(10);
         this.audioModel = audioModel;
         this.fi = fi;
         this.fs = fs;
-        this.nameCOM = nameCOM;
-        this.namePL = namePL;
         this.fModel = fModel;
 
         initPanelAni();
@@ -61,6 +59,11 @@ public class FrameGame extends javax.swing.JFrame {
 
         this.jL_TxtAreaPlus_Log.setForeground(new Color(176, 176, 176));
         SwingUtilities.invokeLater(() -> centrareFinestra());
+    }
+    
+    public void setGameIcons(Icon nameCOM, Icon namePL) {
+        this.nameCOM = nameCOM;
+        this.namePL = namePL;
     }
     
     private void centrareFinestra() {
@@ -993,7 +996,7 @@ public class FrameGame extends javax.swing.JFrame {
      */
     private void endGame() {
         this.dispose();
-        Utility.FrameOpener.openFrame(Utility.FrameOpener.fr_hub);
+        //Utility.FrameOpener.openFrame(Utility.FrameOpener.fr_hub);
     }
 
     /**

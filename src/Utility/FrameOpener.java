@@ -3,6 +3,8 @@ package Utility;
 import Models.AudioModel;
 import Models.FontModel;
 import Models.SettingsModel;
+import Views.FrameCharacterChoice;
+import Views.FrameGame;
 import Views.FrameHub;
 import Views.FrameInfo;
 import Views.FrameSettings;
@@ -16,6 +18,7 @@ import javax.swing.JFrame;
  * @author alber
  */
 public interface FrameOpener {
+    //FrameOpener, FrameCharChoice, FrameGame
     
     public static final AudioModel audio_model = new AudioModel();
     public static final FontModel font_model = new FontModel();
@@ -24,6 +27,8 @@ public interface FrameOpener {
     public static final FrameInfo fr_info = new FrameInfo();
     public static final FrameSettings fr_settings = new FrameSettings(font_model, settings_model);
     public static final FrameHub fr_hub = new FrameHub(fr_settings, audio_model, font_model, fr_info);
+    public static final FrameCharacterChoice fr_char_choice = new FrameCharacterChoice(audio_model, fr_settings, font_model, fr_info);
+    public static final FrameGame fr_game = new FrameGame(audio_model, fr_settings, font_model, fr_info);
     
     
     public static void openFrame(JFrame frame, JFrame frame_rif, int width, int height) {

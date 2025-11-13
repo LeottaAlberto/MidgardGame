@@ -1013,17 +1013,16 @@ public class FrameCharacterChoice extends javax.swing.JFrame {
         if(plChoice) plChoice=false;
         else{
             Icon[] nomi=getImgNomi(plNSelect,comNSelect,plHSelect,comHSelect);
-            FrameGame fg = new FrameGame(this.audioModel, this.fs, nomi[0], nomi[1], this.fModel, this.fi);
             
             GameModel gameModel= new GameModel();
-            fg.setModel(gameModel);
+            Utility.FrameOpener.fr_game.setModel(gameModel);
             gameModel.setPersScelti(plNSelect,comNSelect,plHSelect,comHSelect);
-            fg.setDefaultValue();
+            Utility.FrameOpener.fr_game.setDefaultValue();
+
             
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            GraphicsDevice cc = ge.getDefaultScreenDevice();
-            //qcc.setFullScreenWindow(fg);
-            fg.setVisible(true);
+            Utility.FrameOpener.fr_game.setGameIcons(nomi[0], nomi[1]);
+            
+            Utility.FrameOpener.openFrame(Utility.FrameOpener.fr_game, true);
             this.dispose();
         }
         jIF_ConfermaScelta.dispose();
