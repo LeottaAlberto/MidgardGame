@@ -278,15 +278,16 @@ public class FrameHub extends javax.swing.JFrame {
      * Quando il jB_Play viene cliccato viene aperto il FrameCharacterChoice e viene chiuso il frame corrente
      */
     private void openFrameCharChoice(){
-        fcc = new FrameCharacterChoice(audioModel, this.fs, this.fModel, this.fi);
+        /* fcc = new FrameCharacterChoice(audioModel, this.fs, this.fModel, this.fi);
         fcc.setResizable(false);
         fcc.setLocationRelativeTo(this);
         fcc.setSize(1920, 1080);
         //Apre a schermo intero la finestra
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice cc = ge.getDefaultScreenDevice();
-        //cc.setFullScreenWindow(fcc);
-        fcc.setVisible(true);
+        //cc.setFullScreenWindow(fcc); */
+        //fcc.setVisible(true);
+        Utility.FrameOpener.openFrame(Utility.FrameOpener.fr_char_choice, true);
         this.dispose();
     }
             
