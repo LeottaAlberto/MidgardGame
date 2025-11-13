@@ -5,6 +5,7 @@ import Models.FontModel;
 import Models.SettingsModel;
 import java.awt.Font;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 
@@ -16,12 +17,20 @@ public class FrameSettings extends javax.swing.JFrame {
     private FontModel fModel;
     private FrameCharacterChoice fcc;
     private FrameGame fg;
+    private JFrame fr_rif;
+    
+    public static final int FRAME_WIDTH = 1200;
+    public static final int FRAME_HEIGHT = 800;
+    
     //Costruttore
     public FrameSettings(FontModel fModel, FrameCharacterChoice fcc, FrameGame fg) {
         initComponents();
         this.fModel = fModel;
-        
-        
+    }
+    public FrameSettings(FontModel fModel, SettingsModel model) {
+        initComponents();
+        this.fModel = fModel;
+        this.model = model;
     }
 
     @SuppressWarnings("unchecked")
@@ -296,6 +305,11 @@ public class FrameSettings extends javax.swing.JFrame {
         this.model = model;
     }
     //Setter
+    public void setFrameRif(JFrame rif) {
+        if(rif == null) throw new ExceptionInInitializerError("JFrame Rif is null");
+        
+        this.fr_rif = rif;
+    }
     public void setJS_SetValueMusic(int value){
         if(value <= 6 && value >= -40) jS_SetVolumeMusic.setValue(value);
     }
@@ -386,11 +400,8 @@ public class FrameSettings extends javax.swing.JFrame {
             if(!this.model.audioModel.getBase().isRunning()) jCB_Music.setSelected(false);
             else jCB_Music.setSelected(true);
         }
-
-        this.setLocation(260, 140);
-        this.setSize(1400, 800);
-        this.setAlwaysOnTop(true);
-        this.setVisible(true);
+        
+        Utility.FrameOpener.openFrame(this, this.fr_rif, FRAME_WIDTH, FRAME_HEIGHT);
     }
     
     

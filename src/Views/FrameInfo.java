@@ -24,6 +24,8 @@ public class FrameInfo extends javax.swing.JFrame implements KeyListener{
     
     private final int NORMAL = (int)MainClass.NUM_CHARACTER / 2;
     private final int HERO = (int)MainClass.NUM_ABILITY / 2;
+        public static final int FRAME_WIDTH = 1400;
+    public static final int FRAME_HEIGHT = 1000;
     
     private GridBagLayout gridBag;
     private GridBagConstraints gridBagContraints;

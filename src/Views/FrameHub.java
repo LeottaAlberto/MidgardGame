@@ -7,6 +7,7 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import midgardgamebeta.MainClass;
 
 public class FrameHub extends javax.swing.JFrame {
     
@@ -20,11 +21,14 @@ public class FrameHub extends javax.swing.JFrame {
     //Costruttore
     public FrameHub(FrameSettings fs, AudioModel audioModel, FontModel fModell, FrameInfo fi) {
         this.setUndecorated(true);
+        this.setAlwaysOnTop(false);
         initComponents();
         this.fi = fi;
         this.fs = fs;
         this.audioModel = audioModel;
         this.fModel = fModell;
+        
+        fs.setFrameRif(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -41,7 +45,7 @@ public class FrameHub extends javax.swing.JFrame {
         jL_Title = new javax.swing.JLabel();
         jL_BackGround = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -227,7 +231,8 @@ public class FrameHub extends javax.swing.JFrame {
      * @param evt evento
      */
     private void jB_ImpostazioniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_ImpostazioniActionPerformed
-        fs.showFrameSettings();
+        //fs.showFrameSettings();
+        Utility.FrameOpener.openFrame(Utility.FrameOpener.fr_settings, false);
     }//GEN-LAST:event_jB_ImpostazioniActionPerformed
 
     /**

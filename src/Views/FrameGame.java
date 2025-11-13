@@ -491,7 +491,7 @@ public class FrameGame extends javax.swing.JFrame {
     }// GEN-LAST:event_jTB_BtnEntered
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
-        MainClass.openFrameInfo(fi);
+        Utility.FrameOpener.openFrame(fi, this, FrameInfo.FRAME_WIDTH, FrameInfo.FRAME_HEIGHT);
     }// GEN-LAST:event_jButton1ActionPerformed
 
     public boolean jTB_SoundIsSelected() {
@@ -993,7 +993,7 @@ public class FrameGame extends javax.swing.JFrame {
      */
     private void endGame() {
         this.dispose();
-        MainClass.openFrameHub();
+        Utility.FrameOpener.openFrame(Utility.FrameOpener.fr_hub);
     }
 
     /**
