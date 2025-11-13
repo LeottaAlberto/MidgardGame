@@ -4,11 +4,10 @@ import Models.AudioModel;
 import Models.FontModel;
 import Models.SettingsModel;
 import java.awt.Font;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
-
+import javax.swing.JCheckBox;
 
 public class FrameSettings extends javax.swing.JFrame {
     
@@ -65,6 +64,7 @@ public class FrameSettings extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
+        jPanel3.setMinimumSize(new java.awt.Dimension(1920, 1080));
         jPanel3.setOpaque(false);
 
         jL_TextMusic.setBackground(new java.awt.Color(255, 255, 255));
@@ -74,7 +74,7 @@ public class FrameSettings extends javax.swing.JFrame {
         jL_TextMusic.setText("Music:");
         jL_TextMusic.setToolTipText("");
 
-        jCB_Music.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jCB_Music.setFont(new java.awt.Font("Segoe UI", 0, 100)); // NOI18N
         jCB_Music.setSelected(true);
         jCB_Music.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jCB_Music.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -210,8 +210,8 @@ public class FrameSettings extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(263, 263, 263)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(1086, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jL_TextSoundEffect)
                     .addComponent(jL_TextMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,12 +225,12 @@ public class FrameSettings extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(456, Short.MAX_VALUE))
+                .addGap(153, 153, 153))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(254, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(71, 71, 71)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -245,11 +245,11 @@ public class FrameSettings extends javax.swing.JFrame {
                         .addGap(72, 72, 72)
                         .addComponent(jL_TextDifficulty, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(197, 197, 197))
+                .addContainerGap(660, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 0, 1400, 800);
+        jPanel3.setBounds(0, 0, 1920, 1080);
 
         jL_BackGroundSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resource/new_background_settings.png"))); // NOI18N
         jL_BackGroundSettings.setText("jLabel2");
