@@ -996,7 +996,7 @@ public class FrameGame extends javax.swing.JFrame {
      */
     private void endGame() {
         this.dispose();
-        //Utility.FrameOpener.openFrame(Utility.FrameOpener.fr_hub);
+        Utility.FrameOpener.openFrame(Utility.FrameOpener.fr_hub, true);
     }
 
     /**
