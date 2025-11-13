@@ -231,8 +231,7 @@ public class FrameHub extends javax.swing.JFrame {
      * @param evt evento
      */
     private void jB_ImpostazioniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_ImpostazioniActionPerformed
-        //fs.showFrameSettings();
-        Utility.FrameOpener.openFrame(Utility.FrameOpener.fr_settings, false);
+        fs.showFrameSettings();
     }//GEN-LAST:event_jB_ImpostazioniActionPerformed
 
     /**

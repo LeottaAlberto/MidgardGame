@@ -251,10 +251,13 @@ public class FrameSettings extends javax.swing.JFrame {
         getContentPane().add(jPanel3);
         jPanel3.setBounds(0, 0, 1400, 800);
 
-        jL_BackGroundSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resource/backgroundSettings.png"))); // NOI18N
+        jL_BackGroundSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resource/new_background_settings.png"))); // NOI18N
         jL_BackGroundSettings.setText("jLabel2");
+        jL_BackGroundSettings.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        jL_BackGroundSettings.setMinimumSize(new java.awt.Dimension(1920, 1080));
+        jL_BackGroundSettings.setPreferredSize(new java.awt.Dimension(1920, 1080));
         getContentPane().add(jL_BackGroundSettings);
-        jL_BackGroundSettings.setBounds(0, 0, 1400, 800);
+        jL_BackGroundSettings.setBounds(0, 0, 1920, 1080);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -272,6 +275,8 @@ public class FrameSettings extends javax.swing.JFrame {
 
     private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
         this.dispose();
+        Utility.FrameOpener.fr_hub.requestFocus();
+        Utility.FrameOpener.fr_hub.setVisible(true);
     }//GEN-LAST:event_formWindowLostFocus
 
     private void jS_SetVolumeMusicStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jS_SetVolumeMusicStateChanged
@@ -400,8 +405,7 @@ public class FrameSettings extends javax.swing.JFrame {
             if(!this.model.audioModel.getBase().isRunning()) jCB_Music.setSelected(false);
             else jCB_Music.setSelected(true);
         }
-        
-        Utility.FrameOpener.openFrame(this, this.fr_rif, FRAME_WIDTH, FRAME_HEIGHT);
+        Utility.FrameOpener.openFrame(Utility.FrameOpener.fr_settings, false);
     }
     
     

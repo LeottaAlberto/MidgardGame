@@ -80,6 +80,7 @@ public class AudioModel {
      * @param value volume < 6 && > -40
      */
     public void setVolumeBase(float value){
+        System.out.println("SetVolumeEffect: " + this.fcBase.getValue());
         if(value > 6) this.fcBase.setValue(6f);
         else this.fcBase.setValue(value);
     }
@@ -88,6 +89,7 @@ public class AudioModel {
      * @param value volume < 6 && > -40
      */
     public void setVolumeSoundEffect(float value){
+        System.out.println("SetVolumeEffect: " + this.fcSoundEffect.getValue());
         if(value > 6) this.fcSoundEffect.setValue(6f);
         else this.fcSoundEffect.setValue(value);
     }
