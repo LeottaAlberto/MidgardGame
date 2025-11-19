@@ -263,9 +263,8 @@ public class FrameSettings extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void jCB_MusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCB_MusicActionPerformed
-        if(!jCB_Music.isSelected()) {
+        if(!jCB_Music.isSelected())
             model.stopSound(jS_SetVolumeMusic);
-        }
         else {
             jS_SetVolumeMusic.setValue((int) model.getLastValue());
             model.audioModel.setVolumeBase(model.getLastValue());
@@ -274,9 +273,9 @@ public class FrameSettings extends javax.swing.JFrame {
     }//GEN-LAST:event_jCB_MusicActionPerformed
 
     private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
+        this.fr_rif.setVisible(true);
+        System.out.println("Frame" + this.fr_rif);
         this.dispose();
-        Utility.FrameOpener.fr_hub.requestFocus();
-        Utility.FrameOpener.fr_hub.setVisible(true);
     }//GEN-LAST:event_formWindowLostFocus
 
     private void jS_SetVolumeMusicStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jS_SetVolumeMusicStateChanged
@@ -387,7 +386,7 @@ public class FrameSettings extends javax.swing.JFrame {
     
     //fa partire la base
     public void audioStart() {
-       model.startSound(jS_SetVolumeMusic);
+        model.startSound(jS_SetVolumeMusic);
     }
     //fa fermare la base
     public void audioStop() {
@@ -398,13 +397,14 @@ public class FrameSettings extends javax.swing.JFrame {
         this.jCB_Music.setSelected(!jCB_Music.isSelected());
     }
     //rende visibile il frame
-    public void showFrameSettings(){
+    public void showFrameSettings(JFrame rif){
         if(!model.isOpen()){
             setSettingsObjects();
             model.setOpen(true);
             if(!this.model.audioModel.getBase().isRunning()) jCB_Music.setSelected(false);
             else jCB_Music.setSelected(true);
         }
+        this.fr_rif = rif;
         Utility.FrameOpener.openFrame(Utility.FrameOpener.fr_settings, false);
     }
     

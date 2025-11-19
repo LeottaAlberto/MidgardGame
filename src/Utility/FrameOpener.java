@@ -8,6 +8,7 @@ import Views.FrameGame;
 import Views.FrameHub;
 import Views.FrameInfo;
 import Views.FrameSettings;
+import Views.SettingsJPanel;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
@@ -17,19 +18,39 @@ import javax.swing.JFrame;
  *
  * @author alber
  */
-public interface FrameOpener {
-    //FrameOpener, FrameCharChoice, FrameGame
+public class FrameOpener {
+    //FrameCharChoice, FrameGame
     
-    public static final AudioModel audio_model = new AudioModel();
-    public static final FontModel font_model = new FontModel();
-    public static final SettingsModel settings_model = new SettingsModel();
+    public static AudioModel audio_model;
+    public static FontModel font_model;
+    public static SettingsModel settings_model;
+    public static FrameInfo fr_info;
+    public static FrameSettings fr_settings;
+    public static FrameHub fr_hub;
+    public static FrameCharacterChoice fr_char_choice;
+    public static FrameGame fr_game;
+    public static SettingsJPanel jp_setting;
+    
+    public static void init() {
+        try {
+            audio_model = new AudioModel();
+            font_model = new FontModel();
+            settings_model = new SettingsModel();
+            fr_info = new FrameInfo();
+            fr_settings = new FrameSettings(font_model, settings_model);
 
-    public static final FrameInfo fr_info = new FrameInfo();
-    public static final FrameSettings fr_settings = new FrameSettings(font_model, settings_model);
-    public static final FrameHub fr_hub = new FrameHub(fr_settings, audio_model, font_model, fr_info);
-    public static final FrameCharacterChoice fr_char_choice = new FrameCharacterChoice(audio_model, fr_settings, font_model, fr_info);
-    public static final FrameGame fr_game = new FrameGame(audio_model, fr_settings, font_model, fr_info);
-    
+            jp_setting = new SettingsJPanel(font_model, settings_model, audio_model);
+            
+            fr_hub = new FrameHub(fr_settings, audio_model, font_model, fr_info);
+            fr_char_choice = new FrameCharacterChoice(audio_model, fr_settings, font_model, fr_info);
+            fr_game = new FrameGame(audio_model, fr_settings, font_model, fr_info);
+            
+            jp_setting.setJFrames(fr_char_choice, fr_game);
+        } catch (Exception e) {
+            e.printStackTrace();  // VEDI SE IL COSTRUTTORE FALLISCE
+        }
+        System.out.println("Init ok");
+    }
     
     public static void openFrame(JFrame frame, JFrame frame_rif, int width, int height) {
         if(frame == null) throw new ExceptionInInitializerError("Frame Passato Null");

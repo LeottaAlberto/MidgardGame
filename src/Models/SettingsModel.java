@@ -27,7 +27,7 @@ public class SettingsModel {
         this.audioModel=audiomodel;
     }
     public void setLastValue(float value){
-        if(value <= 6 && value >= -40)this.lastValue = value;
+        if(value <= 6 && value >= -40) this.lastValue = value;
     }
     
     /**

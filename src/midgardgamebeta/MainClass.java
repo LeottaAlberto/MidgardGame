@@ -16,6 +16,17 @@ public class MainClass {
     // private static FrameInfo fr_info;
     
     public static void main(String[] args) {
+        Thread initObj = new Thread(()->{
+            FrameOpener.init();
+        });
+        
+        initObj.start();
+        
+        try {
+            initObj.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         // audio_model = new AudioModel();        // Audio Model
         // font_model = new FontModel();          // Font Model
         // settings_model = new SettingsModel();  // Settings Model
@@ -25,7 +36,7 @@ public class MainClass {
         // fr_settings = new FrameSettings(font_model); //Frame Settings
         // fr_hub = new FrameHub(fr_settings, audio_model, font_model, fr_info);
         
-        Utility.FrameOpener.fr_info.setVisible(false);
+        //Utility.FrameOpener.fr_info.setVisible(false);
             
         // Settings
         Utility.FrameOpener.settings_model.setAudioModel(Utility.FrameOpener.audio_model);

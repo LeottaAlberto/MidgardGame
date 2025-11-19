@@ -74,13 +74,47 @@ public class AudioModel {
     public FloatControl getFcBase(){
         return this.fcBase;
     }
+    public Clip getSoundEffect() {
+        return this.soundEffect;
+    }
+    public FloatControl getFcSoundEffect() {
+        return this.fcSoundEffect;
+    }
+    public URL getAudioFoldSoundEffect() {
+        return this.audioFoldSoundEffect;
+    }
+    public AudioInputStream getSoundEF() {
+        return this.soundEF;
+    }
+    public PathStorage getPathStorage() {
+        return this.pathStorage;
+    }
+    public AudioInputStream getSoundBase() {
+        return this.soundBase;
+    }
+    public URL getAudioFoldBase() {
+        return this.audioFoldBase;
+    }
+    public String[] getSoundFold() {
+        return this.soundFold;
+    }
+    public static int getMediumV() {
+        return mediumV;
+    }
+    public int getError() {
+        return error;
+    }
+    public int getNumBase() {
+        return numBase;
+    }
+    
     
     /**
      * Setta il volume della base con un valore massimo di 6 e uno minimo di -40
      * @param value volume < 6 && > -40
      */
     public void setVolumeBase(float value){
-        if(value > 6) this.fcBase.setValue(6f);
+        if(value > MAXVOLUME) this.fcBase.setValue(MAXVOLUME);
         else this.fcBase.setValue(value);
     }
      /**
@@ -88,7 +122,7 @@ public class AudioModel {
      * @param value volume < 6 && > -40
      */
     public void setVolumeSoundEffect(float value){
-        if(value > 6) this.fcSoundEffect.setValue(6f);
+        if(value > MAXVOLUME) this.fcSoundEffect.setValue(MAXVOLUME);
         else this.fcSoundEffect.setValue(value);
     }
     

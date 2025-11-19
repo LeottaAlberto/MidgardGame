@@ -5,6 +5,7 @@ import Entity.Normal;
 import Models.AudioModel;
 import Models.FontModel;
 import Models.GameModel;
+import Views.SettingsJPanel;
 import Utility.CharacterStorage;
 import Utility.PathStorage;
 import java.awt.Dimension;
@@ -12,6 +13,7 @@ import java.awt.DisplayMode;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
+import java.util.Arrays;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,6 +28,8 @@ public class FrameCharacterChoice extends javax.swing.JFrame {
     private final FrameSettings fs;
     private final FrameInfo fi;
     private final FontModel fModel;
+    
+    private final SettingsJPanel settingsJPanel;
 
     private JLabel app;
     private Icon appIcon;
@@ -56,32 +60,36 @@ public class FrameCharacterChoice extends javax.swing.JFrame {
         app = jL_char1;
         this.fs.setFCC(this);
         if(this.fs.getJS_SetValueMusic() == this.audioModel.getMinV()) setJTB_Sound(true);
-        SwingUtilities.invokeLater(() -> centrareFinestra());
+        //SwingUtilities.invokeLater(() -> centrareFinestra());
+        
+        settingsJPanel = new SettingsJPanel(Utility.FrameOpener.jp_setting);
+        this.jIF_Settings.setContentPane(settingsJPanel);
     }
     
-    private void centrareFinestra() {
-        // Ottieni le dimensioni dello schermo
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice[] screenDevices = ge.getScreenDevices();
+    // private void centrareFinestra() {
+    //     // Ottieni le dimensioni dello schermo
+    //     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    //     GraphicsDevice[] screenDevices = ge.getScreenDevices();
 
-        if (screenDevices.length > 0) {
-            GraphicsDevice screen = screenDevices[0];
-            DisplayMode mode = screen.getDisplayMode();
+    //     if (screenDevices.length > 0) {
+    //         GraphicsDevice screen = screenDevices[0];
+    //         DisplayMode mode = screen.getDisplayMode();
 
-            // Calcola la posizione x e y per centrare la finestra
-            int posX = (mode.getWidth() - getWidth()) / 2;
-            int posY = (mode.getHeight() - getHeight()) / 2;
+    //         // Calcola la posizione x e y per centrare la finestra
+    //         int posX = (mode.getWidth() - getWidth()) / 2;
+    //         int posY = (mode.getHeight() - getHeight()) / 2;
 
-            // Imposta la posizione della finestra
-            setLocation(posX, posY);
-        }
-    }
+    //         // Imposta la posizione della finestra
+    //         setLocation(posX, posY);
+    //     }
+    // }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jIF_Settings = new javax.swing.JInternalFrame();
         jIF_ConfermaScelta = new javax.swing.JInternalFrame();
         jLayeredPane5 = new javax.swing.JLayeredPane();
         jL_TextIF = new javax.swing.JLabel();
@@ -116,6 +124,31 @@ public class FrameCharacterChoice extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setMinimumSize(new java.awt.Dimension(1300, 700));
         getContentPane().setLayout(null);
+
+        jIF_Settings.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jIF_Settings.setTitle("Settings");
+        jIF_Settings.setMinimumSize(new java.awt.Dimension(1200, 800));
+        jIF_Settings.setPreferredSize(new java.awt.Dimension(1200, 800));
+        jIF_Settings.setVisible(false);
+        jIF_Settings.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jIF_SettingsKeyPressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jIF_SettingsLayout = new javax.swing.GroupLayout(jIF_Settings.getContentPane());
+        jIF_Settings.getContentPane().setLayout(jIF_SettingsLayout);
+        jIF_SettingsLayout.setHorizontalGroup(
+            jIF_SettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jIF_SettingsLayout.setVerticalGroup(
+            jIF_SettingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jIF_Settings);
+        jIF_Settings.setBounds(0, 0, 1200, 800);
 
         jIF_ConfermaScelta.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jIF_ConfermaScelta.setTitle("Conferma");
@@ -450,14 +483,14 @@ public class FrameCharacterChoice extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(jL_TitleInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jB_Normal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)))
+                        .addGap(31, 31, 31))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(jL_TitleInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jB_Hero, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jL_Info, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -472,7 +505,9 @@ public class FrameCharacterChoice extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jL_TitleInfo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jL_TitleInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42))
                     .addComponent(jL_Info, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -540,7 +575,7 @@ public class FrameCharacterChoice extends javax.swing.JFrame {
         jPanel4.add(jB_Info);
 
         getContentPane().add(jPanel4);
-        jPanel4.setBounds(1710, 990, 180, 62);
+        jPanel4.setBounds(1710, 990, 180, 66);
 
         jL_BackGround.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jL_BackGround.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resource/imgHub/background.png"))); // NOI18N
@@ -699,7 +734,8 @@ public class FrameCharacterChoice extends javax.swing.JFrame {
     }//GEN-LAST:event_jTB_SuondActionPerformed
 
     private void jB_SettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_SettingsActionPerformed
-        fs.showFrameSettings();
+        settingsJPanel.showPanelSettings(this, this.jIF_Settings);
+        //fs.showFrameSettings(this);
     }//GEN-LAST:event_jB_SettingsActionPerformed
 
     private void jTB_BtnEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTB_BtnEntered
@@ -707,12 +743,16 @@ public class FrameCharacterChoice extends javax.swing.JFrame {
     }//GEN-LAST:event_jTB_BtnEntered
 
     private void jB_InfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_InfoActionPerformed
-        MainClass.openFrameInfo(this.fi);
+        Utility.FrameOpener.openFrame(fi, true);
     }//GEN-LAST:event_jB_InfoActionPerformed
 
     private void jIF_ConfermaSceltaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jIF_ConfermaSceltaFocusLost
         jIF_ConfermaScelta.dispose();
     }//GEN-LAST:event_jIF_ConfermaSceltaFocusLost
+
+    private void jIF_SettingsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIF_SettingsKeyPressed
+        if(evt.getKeyCode() == 27) jIF_Settings.dispose();
+    }//GEN-LAST:event_jIF_SettingsKeyPressed
 
     /**
      * @param playerN normal scelto dal player
@@ -1057,6 +1097,7 @@ public class FrameCharacterChoice extends javax.swing.JFrame {
     private javax.swing.JButton jB_Normal;
     private javax.swing.JButton jB_Settings;
     private javax.swing.JInternalFrame jIF_ConfermaScelta;
+    private javax.swing.JInternalFrame jIF_Settings;
     private javax.swing.JLabel jL_BackGround;
     private javax.swing.JLabel jL_ImgEnemy;
     private javax.swing.JLabel jL_ImgPL1;

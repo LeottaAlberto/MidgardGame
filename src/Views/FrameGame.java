@@ -15,7 +15,6 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.SwingUtilities;
-import midgardgamebeta.MainClass;
 
 public class FrameGame extends javax.swing.JFrame {
 
@@ -29,17 +28,18 @@ public class FrameGame extends javax.swing.JFrame {
     private AniModel aniModel;
     private FontModel fModel;
 
-    PanelAni panelAni = new PanelAni(this); //oanel per le animazioni
+    PanelAni panelAni = new PanelAni(this); // panel per le animazioni
 
     private int aniIndex = 0;       //determina quali animazione verrà eseguita
     private Icon nameCOM, namePL;   //immagini nomi personaggi
     private boolean manaRicaricato; // true->mana già ricaricato / false->mana da ricaricare
     private boolean fine;           //true->partita finita / false-> partita in corso
     private TextAreaPlus txtA_PL;   //log di gioco
+    
+    private final SettingsJPanel settingsJPanel;
 
     public FrameGame(AudioModel audioModel, FrameSettings fs, FontModel fModel, FrameInfo fi) {
         initComponents();
-        this.setSize(1920, 1080);
         this.txtA_PL = new TextAreaPlus(10);
         this.audioModel = audioModel;
         this.fi = fi;
@@ -58,7 +58,9 @@ public class FrameGame extends javax.swing.JFrame {
             jTB_Suond.setSelected(true);
 
         this.jL_TxtAreaPlus_Log.setForeground(new Color(176, 176, 176));
-        SwingUtilities.invokeLater(() -> centrareFinestra());
+        
+        settingsJPanel = new SettingsJPanel(Utility.FrameOpener.jp_setting);
+        this.jIF_Settings.setContentPane(settingsJPanel);
     }
     
     public void setGameIcons(Icon nameCOM, Icon namePL) {
@@ -107,6 +109,7 @@ public class FrameGame extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         buttonGroup2 = new javax.swing.ButtonGroup();
+        jIF_Settings = new javax.swing.JInternalFrame();
         jP_Settings = new javax.swing.JPanel();
         jTB_Suond = new javax.swing.JToggleButton();
         jB_Settings = new javax.swing.JButton();
@@ -129,6 +132,20 @@ public class FrameGame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
+
+        jIF_Settings.setBorder(null);
+        jIF_Settings.setTitle("Settings");
+        jIF_Settings.setMinimumSize(new java.awt.Dimension(1200, 800));
+        jIF_Settings.setNormalBounds(new java.awt.Rectangle(0, 0, 1200, 800));
+        jIF_Settings.setPreferredSize(new java.awt.Dimension(1200, 800));
+        jIF_Settings.setVisible(false);
+        jIF_Settings.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jIF_SettingsKeyPressed(evt);
+            }
+        });
+        getContentPane().add(jIF_Settings);
+        jIF_Settings.setBounds(0, 0, 1200, 800);
 
         jP_Settings.setOpaque(false);
         jP_Settings.setLayout(new java.awt.GridLayout(1, 3));
@@ -417,6 +434,10 @@ public class FrameGame extends javax.swing.JFrame {
         openFrameLog();
     }//GEN-LAST:event_jL_TxtAreaPlus_LogMouseClicked
 
+    private void jIF_SettingsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jIF_SettingsKeyPressed
+        if(evt.getKeyCode() == 27) jIF_Settings.dispose();
+    }//GEN-LAST:event_jIF_SettingsKeyPressed
+
     private void jB_AtkActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jB_AtkActionPerformed
         start(-1);
     }// GEN-LAST:event_jB_AtkActionPerformed
@@ -466,7 +487,7 @@ public class FrameGame extends javax.swing.JFrame {
     }// GEN-LAST:event_jB_EscMouseExited
 
     private void jB_SettingsActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jB_SettingsActionPerformed
-        fs.showFrameSettings();
+        settingsJPanel.showPanelSettings(this, this.jIF_Settings);
     }// GEN-LAST:event_jB_SettingsActionPerformed
 
     private void jTB_SuondActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTB_SuondActionPerformed
@@ -1083,6 +1104,7 @@ public class FrameGame extends javax.swing.JFrame {
     private javax.swing.JButton jB_Esc;
     private javax.swing.JButton jB_Settings;
     private javax.swing.JButton jButton1;
+    private javax.swing.JInternalFrame jIF_Settings;
     private javax.swing.JLabel jL_BackGround;
     private javax.swing.JLabel jL_ComIcon;
     private javax.swing.JLabel jL_ComName;
