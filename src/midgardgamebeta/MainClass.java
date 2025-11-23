@@ -5,16 +5,7 @@ public class MainClass {
 
     public static final int NUM_CHARACTER = 16;
     public static final int NUM_ABILITY = NUM_CHARACTER;
-    
-    public static MainClass mc = new MainClass();
 
-    // private static AudioModel audio_model;
-    // private static FontModel font_model;
-    // private static SettingsModel settings_model;
-    // private static FrameSettings fr_settings;
-    // public static FrameHub fr_hub;
-    // private static FrameInfo fr_info;
-    
     public static void main(String[] args) {
         Thread initObj = new Thread(()->{
             FrameOpener.init();
@@ -25,18 +16,8 @@ public class MainClass {
         try {
             initObj.join();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.err.println("Error => " + e);
         }
-        // audio_model = new AudioModel();        // Audio Model
-        // font_model = new FontModel();          // Font Model
-        // settings_model = new SettingsModel();  // Settings Model
-        
-        
-        // fr_info = new FrameInfo(); //Frame Info
-        // fr_settings = new FrameSettings(font_model); //Frame Settings
-        // fr_hub = new FrameHub(fr_settings, audio_model, font_model, fr_info);
-        
-        //Utility.FrameOpener.fr_info.setVisible(false);
             
         // Settings
         Utility.FrameOpener.settings_model.setAudioModel(Utility.FrameOpener.audio_model);
